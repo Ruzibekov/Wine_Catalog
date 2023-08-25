@@ -21,7 +21,7 @@ object MainScreenView {
 
         ) { paddingValues ->
 
-
+            
         }
     }
 }

@@ -15,6 +15,8 @@ val Pink40 = Color(0xFF7D5260)
 object AppColor {
     val Primary = Color(0xFF7A2A65)
     val Secondary = Color(0xFF421124)
+    val Background = Color(0xFFF8F8F9)
+
     val White = Color(0xFFFFFFFF)
 }
 

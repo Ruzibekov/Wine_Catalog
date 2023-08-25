@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,37 +27,47 @@ object MainTopBarView {
     @Composable
     fun Default() {
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Brushes.PrimaryBrush)
-                .padding(top = 38.dp, start = 38.dp, end = 38.dp, bottom = 20.dp)
+        Card(
+            shape = RoundedCornerShape(
+                topStart = 0.dp,
+                topEnd = 0.dp,
+                bottomStart = 30.dp,
+                bottomEnd = 30.dp
+            )
         ) {
 
-            Icon(
-                painter = painterResource(id = R.drawable.ic_details),
-                contentDescription = "details icon",
-                modifier = Modifier.align(Alignment.End),
-                tint = AppColor.White
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Brushes.PrimaryBrush)
+                    .padding(top = 38.dp, start = 38.dp, end = 38.dp, bottom = 20.dp)
+            ) {
 
-            Spacer(modifier = Modifier.height(23.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_details),
+                    contentDescription = "details icon",
+                    modifier = Modifier.align(Alignment.End),
+                    tint = AppColor.White
+                )
 
-            Text(
-                text = stringResource(id = R.string.app_name),
-                style = MaterialTheme.typography.titleLarge,
-                fontSize = 42.sp,
-                color = AppColor.White
-            )
+                Spacer(modifier = Modifier.height(23.dp))
 
-            Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = stringResource(id = R.string.app_name),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontSize = 42.sp,
+                    color = AppColor.White
+                )
 
-            Text(
-                text = stringResource(id = R.string.main_subtitle),
-                style = MaterialTheme.typography.bodyLarge,
-                fontSize = 18.sp,
-                color = AppColor.White
-            )
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Text(
+                    text = stringResource(id = R.string.main_subtitle),
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontSize = 18.sp,
+                    color = AppColor.White
+                )
+            }
         }
     }
 }
