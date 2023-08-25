@@ -1,0 +1,43 @@
+{
+  "id": 1,
+  "name": "Разбитое сердце",
+  "wines": [
+    {
+      "id": 1,
+      "name": "Bodegas Beronia",
+      "variety": "РОЗОВОЕ, СУХОЕ",
+      "country": "Испания",
+      "region": "Риоха",
+      "main_grape": "Главный сорт винограда",
+      "volume": "750ML"
+    },
+    {
+      "id": 2,
+      "name": "Selbach",
+      "variety": "Легкий, сухой",
+      "country": "Германия",
+      "region": "Мозельская долина",
+      "main_grape": "Riesling",
+      "volume": "750ML"
+    },
+    {
+      "id": 3,
+      "name": "LaMarca Prosecco",
+      "variety": "Игристое вино",
+      "country": "Италия",
+      "region": "Тревизио",
+      "main_grape": "Prosecco",
+      "volume": "750ML"
+    },
+    {
+      "id": 4,
+      "name": "Paua Bay",
+      "variety": "Красный, Сухой",
+      "country": "Новая Зеландия",
+      "region": "Мальборо",
+      "main_grape": "Pinot Noir",
+      "volume": "750ML"
+    }
+  ]
+}
+
