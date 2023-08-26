@@ -26,20 +26,24 @@ object CatalogScreenView {
             }
         ) { paddingValues ->
 
-            HorizontalPager(
-                modifier = Modifier.padding(paddingValues),
-                pageCount = 5,
-                contentPadding = PaddingValues(
-                    top = 40.dp,
-                    start = 20.dp,
-                    bottom = 48.dp,
-                    end = 40.dp
-                ),
-                pageSpacing = 10.dp
-            ) {
+            state.selectedCatalog.value?.let { catalog ->
 
-                CatalogWineItemView.Default(){
-                    listeners.openWineDetailsScreen()
+                HorizontalPager(
+                    modifier = Modifier.padding(paddingValues),
+                    pageCount = catalog.wines.size,
+                    contentPadding = PaddingValues(
+                        top = 40.dp,
+                        start = 20.dp,
+                        bottom = 48.dp,
+                        end = 40.dp
+                    ),
+                    pageSpacing = 10.dp
+                ) { page ->
+
+                    CatalogWineItemView.Default(catalog.wines[page]) {
+
+                        listeners.openWineDetailsScreen()
+                    }
                 }
             }
         }

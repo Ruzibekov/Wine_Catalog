@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,18 +20,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import uz.ruzibekov.wine_catalog.R
+import uz.ruzibekov.wine_catalog.data.model.WineData
 import uz.ruzibekov.wine_catalog.ui.theme.AppColor
 
 object CatalogWineItemView {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun Default(onClick: () -> Unit) {
+    fun Default(data: WineData, onClick: () -> Unit) {
 
         Box(contentAlignment = Alignment.BottomEnd) {
 
@@ -54,24 +58,27 @@ object CatalogWineItemView {
                     Row(verticalAlignment = Alignment.Bottom) {
 
                         Text(
-                            text = "Bodegas Beronia",
+                            text = data.name,
                             style = MaterialTheme.typography.titleLarge,
-                            modifier = Modifier.width(110.dp),
+                            modifier = Modifier.width(120.dp),
                             fontSize = 32.sp,
                             color = AppColor.Orange
                         )
 
+                        Spacer(modifier = Modifier.width(10.dp))
+
                         Icon(
                             painter = painterResource(id = R.drawable.ic_next_arrow),
                             contentDescription = "next arrow icon",
-                            modifier = Modifier.size(24.dp)
+                            modifier = Modifier.size(24.dp),
+                            tint = AppColor.Orange
                         )
                     }
 
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(
-                        text = "Bodegas Beronia",
+                        text = data.variety,
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.width(100.dp),
                         fontSize = 14.sp,
@@ -88,7 +95,7 @@ object CatalogWineItemView {
                     )
 
                     Text(
-                        text = "Spain",
+                        text = data.country,
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.width(100.dp),
                         fontSize = 13.sp,
@@ -104,7 +111,7 @@ object CatalogWineItemView {
                     )
 
                     Text(
-                        text = "Spain",
+                        text = data.region,
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.width(100.dp),
                         fontSize = 16.sp,
@@ -120,7 +127,7 @@ object CatalogWineItemView {
                     )
 
                     Text(
-                        text = "Spain",
+                        text = data.main_grape,
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.width(100.dp),
                         fontSize = 13.sp,
@@ -137,9 +144,15 @@ object CatalogWineItemView {
                 }
             }
 
+            val context = LocalContext.current
+            val resourceId = context.resources.getIdentifier(data.image, "drawable", context.packageName)
+
             Image(
-                painter = painterResource(id = R.drawable.img_wine),
-                contentDescription = "wine image"
+                painter = painterResource(id = resourceId),
+                contentDescription = "wine image",
+                modifier = Modifier.fillMaxHeight(),
+                alignment = Alignment.BottomEnd,
+                contentScale = ContentScale.Crop
             )
         }
     }

@@ -78,8 +78,9 @@ object CatalogTopBarView {
                 Text(
                     text = stringResource(id = R.string.catalog_subtitle),
                     style = MaterialTheme.typography.bodyLarge,
-                    fontSize = 18.sp,
-                    color = AppColor.White
+                    fontSize = 14.sp,
+                    color = AppColor.White,
+                    lineHeight = 16.sp
                 )
             }
         }

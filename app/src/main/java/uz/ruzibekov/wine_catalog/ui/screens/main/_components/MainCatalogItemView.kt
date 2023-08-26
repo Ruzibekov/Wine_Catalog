@@ -20,9 +20,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import uz.ruzibekov.wine_catalog.R
+import uz.ruzibekov.wine_catalog.data.model.CatalogData
 import uz.ruzibekov.wine_catalog.ui.theme.AppColor
 
 object MainCatalogItemView {
@@ -30,7 +32,7 @@ object MainCatalogItemView {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun Default(onClick: () -> Unit) {
+    fun Default(data: CatalogData, onClick: () -> Unit) {
 
         Card(
             modifier = Modifier
@@ -52,7 +54,7 @@ object MainCatalogItemView {
             ) {
 
                 Text(
-                    text = "Broken Heart",
+                    text = data.name,
                     style = MaterialTheme.typography.titleLarge,
                     fontSize = 28.sp
                 )
@@ -64,7 +66,7 @@ object MainCatalogItemView {
                 ) {
 
                     Text(
-                        text = "Broken Heart",
+                        text = stringResource(id = R.string.see_details),
                         style = MaterialTheme.typography.titleLarge,
                         fontSize = 16.sp,
                         color = AppColor.Orange

@@ -6,40 +6,44 @@
       {
         "id": 1,
         "name": "Bodegas Beronia",
+        "image": "wine_bodegas_beronia",
         "variety": "РОЗОВОЕ, СУХОЕ",
         "country": "Испания",
         "region": "Риоха",
         "main_grape": "Главный сорт винограда",
-      "volume": "750ML"
-    },
-    {
-      "id": 2,
-      "name": "Selbach",
-      "variety": "Легкий, сухой",
-      "country": "Германия",
-      "region": "Мозельская долина",
-      "main_grape": "Riesling",
-      "volume": "750ML"
-    },
-    {
-      "id": 3,
-      "name": "LaMarca Prosecco",
-      "variety": "Игристое вино",
-      "country": "Италия",
-      "region": "Тревизио",
-      "main_grape": "Prosecco",
-      "volume": "750ML"
-    },
-    {
-      "id": 4,
-      "name": "Paua Bay",
-      "variety": "Красный, Сухой",
-      "country": "Новая Зеландия",
-      "region": "Мальборо",
-      "main_grape": "Pinot Noir",
-      "volume": "750ML"
-    }
-  ]
+        "volume": "750ML"
+      },
+      {
+        "id": 2,
+        "name": "Selbach",
+        "image": "wine_selbach",
+        "variety": "Легкий, сухой",
+        "country": "Германия",
+        "region": "Мозельская долина",
+        "main_grape": "Riesling",
+        "volume": "750ML"
+      },
+      {
+        "id": 3,
+        "name": "LaMarca Prosecco",
+        "image": "wine_la_marca_prosecco",
+        "variety": "Игристое вино",
+        "country": "Италия",
+        "region": "Тревизио",
+        "main_grape": "Prosecco",
+        "volume": "750ML"
+      },
+      {
+        "id": 4,
+        "name": "Paua Bay",
+        "image": "wine_paua_bay",
+        "variety": "Красный, Сухой",
+        "country": "Новая Зеландия",
+        "region": "Мальборо",
+        "main_grape": "Pinot Noir",
+        "volume": "750ML"
+      }
+    ]
 }
 ]
 

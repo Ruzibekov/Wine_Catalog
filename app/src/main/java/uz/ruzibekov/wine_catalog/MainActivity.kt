@@ -78,8 +78,9 @@ class MainActivity : ComponentActivity(), MainListeners {
         }
     }
 
-    override fun openCatalogScreen() {
+    override fun openCatalogScreen(data: CatalogData) {
         navController?.navigate(ScreensRoute.Catalog.route)
+        viewModel.state.selectedCatalog.value = data
     }
 
     override fun openWineDetailsScreen() {

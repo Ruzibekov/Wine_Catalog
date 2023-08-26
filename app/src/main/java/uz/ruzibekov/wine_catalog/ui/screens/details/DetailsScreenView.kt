@@ -69,7 +69,7 @@ object DetailsScreenView {
             }
 
             Image(
-                painter = painterResource(id = R.drawable.img_wine),
+                painter = painterResource(id = R.drawable.wine_bodegas_beronia),
                 contentDescription = "wine image",
                 modifier = Modifier.fillMaxHeight().offset(y = 20.dp, x = 100.dp),
                 contentScale = ContentScale.Crop
