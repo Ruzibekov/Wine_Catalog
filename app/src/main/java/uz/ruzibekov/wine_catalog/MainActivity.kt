@@ -81,4 +81,8 @@ class MainActivity : ComponentActivity(), MainListeners {
     override fun openCatalogScreen() {
         navController?.navigate(ScreensRoute.Catalog.route)
     }
+
+    override fun openWineDetailsScreen() {
+        navController?.navigate(ScreensRoute.Details.route)
+    }
 }

@@ -6,4 +6,5 @@ sealed class ScreensRoute(val route: String){
 
     object Catalog : ScreensRoute("catalog-screen")
 
+    object Details : ScreensRoute("details-screen")
 }

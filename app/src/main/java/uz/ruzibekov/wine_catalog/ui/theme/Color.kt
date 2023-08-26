@@ -17,6 +17,7 @@ object AppColor {
     val Secondary = Color(0xFF421124)
     val Background = Color(0xFFF8F8F9)
     val Orange = Color(0xFFE58F65)
+    val Brown = Color(0xFF8F716A)
 
     val White = Color(0xFFFFFFFF)
 }

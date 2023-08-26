@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import uz.ruzibekov.wine_catalog.state.MainState
 import uz.ruzibekov.wine_catalog.ui.listeners.MainListeners
 import uz.ruzibekov.wine_catalog.ui.screens.catalog.CatalogScreenView
+import uz.ruzibekov.wine_catalog.ui.screens.details.DetailsScreenView
 import uz.ruzibekov.wine_catalog.ui.screens.main.MainScreenView
 
 object MainNavGraph {
@@ -22,6 +23,10 @@ object MainNavGraph {
 
             composable(ScreensRoute.Catalog.route) {
                 CatalogScreenView.Default(state = state, listeners = listeners)
+            }
+
+            composable(ScreensRoute.Details.route) {
+                DetailsScreenView.Default(state = state, listeners = listeners)
             }
         }
     }

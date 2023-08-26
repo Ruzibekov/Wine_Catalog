@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import uz.ruzibekov.wine_catalog.state.MainState
 import uz.ruzibekov.wine_catalog.ui.listeners.MainListeners
 import uz.ruzibekov.wine_catalog.ui.screens.catalog._components.CatalogTopBarView
-import uz.ruzibekov.wine_catalog.ui.screens.catalog._components.WineItemView
+import uz.ruzibekov.wine_catalog.ui.screens.catalog._components.CatalogWineItemView
 
 object CatalogScreenView {
 
@@ -38,7 +38,9 @@ object CatalogScreenView {
                 pageSpacing = 10.dp
             ) {
 
-                WineItemView.Default()
+                CatalogWineItemView.Default(){
+                    listeners.openWineDetailsScreen()
+                }
             }
         }
     }
