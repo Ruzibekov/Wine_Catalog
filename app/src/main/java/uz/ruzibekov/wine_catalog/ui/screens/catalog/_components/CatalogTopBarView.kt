@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,13 +22,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import uz.ruzibekov.wine_catalog.R
+import uz.ruzibekov.wine_catalog.data.model.CatalogData
+import uz.ruzibekov.wine_catalog.ui.listeners.MainListeners
 import uz.ruzibekov.wine_catalog.ui.theme.AppColor
 import uz.ruzibekov.wine_catalog.ui.theme.Brushes
 
 object CatalogTopBarView {
 
     @Composable
-    fun Default() {
+    fun Default(data: CatalogData, listeners: MainListeners) {
 
         Card(
             shape = RoundedCornerShape(
@@ -42,7 +45,7 @@ object CatalogTopBarView {
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Brushes.PrimaryBrush)
-                    .padding(top = 38.dp, start = 38.dp, end = 38.dp, bottom = 20.dp)
+                    .padding(top = 38.dp, start = 30.dp, end = 38.dp, bottom = 20.dp)
             ) {
 
                 Row(
@@ -51,11 +54,17 @@ object CatalogTopBarView {
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
 
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_back),
-                        contentDescription = "details icon",
-                        tint = AppColor.White
-                    )
+                    IconButton(
+                        onClick = {
+                            listeners.onBackStack()
+                        }
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_back),
+                            contentDescription = "details icon",
+                            tint = AppColor.White
+                        )
+                    }
 
                     Icon(
                         painter = painterResource(id = R.drawable.ic_details),
@@ -67,7 +76,7 @@ object CatalogTopBarView {
                 Spacer(modifier = Modifier.height(23.dp))
 
                 Text(
-                    text = "Vino nomi",
+                    text = data.name,
                     style = MaterialTheme.typography.titleLarge,
                     fontSize = 42.sp,
                     color = AppColor.White

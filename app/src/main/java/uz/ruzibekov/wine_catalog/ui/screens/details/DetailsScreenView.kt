@@ -30,50 +30,55 @@ object DetailsScreenView {
     @Composable
     fun Default(state: MainState, listeners: MainListeners) {
 
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.BottomEnd
-        ) {
+        state.selectedWine.value?.let { data ->
 
-            Scaffold(
+            Box(
                 modifier = Modifier.fillMaxSize(),
-                topBar = {
-                    DetailsTopBarView.Default()
-                }
-            ) { paddingValues ->
+                contentAlignment = Alignment.BottomEnd
+            ) {
 
-                Column(
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    topBar = {
+                        DetailsTopBarView.Default()
+                    }
+                ) { paddingValues ->
+
+                    Column(
+                        modifier = Modifier
+                            .padding(paddingValues)
+                            .padding(start = 38.dp, end = 200.dp)
+                            .fillMaxWidth()
+                            .verticalScroll(rememberScrollState())
+                    ) {
+
+                        Text(text = "Paua Bay")
+
+                        Text(text = "Red, Dry")
+
+                        Text(
+                            text = "Everything seems to be fine, wonderful, balanced after a family weekend. And one day your lovely half suddenly says:\n" +
+                                    "“You know, dear! You’re beautiful and perfect, but I’m nasty and not worthy of you. That’s why I’m breaking up with you.”"
+                        )
+
+                        Text(
+                            text = "Familiar? So this Pinot for you! Garnet red in colour. A vibrant wine with purity of fruit and great intensity. Packed with lively flavors and distinct herbaceous aromas.\n" +
+                                    "Is it not enough to forget your ex?\n" +
+                                    "Hold my glass! By tasting this wine you will feel a fragrant dark cherry with delicate violet notes and an elegant seductive texture. Raspberry, cherry and plum with subtle oak on the nose. Earthy character, long finish, dry with soft fruit tannins, a wine with serious structure and length."
+                        )
+
+                    }
+                }
+
+                Image(
+                    painter = painterResource(id = R.drawable.wine_bodegas_beronia),
+                    contentDescription = "wine image",
                     modifier = Modifier
-                        .padding(paddingValues)
-                        .padding(start = 38.dp, end = 200.dp)
-                        .fillMaxWidth()
-                        .verticalScroll(rememberScrollState())
-                ) {
-
-                    Text(text = "Paua Bay")
-
-                    Text(text = "Red, Dry")
-
-                    Text(
-                        text = "Everything seems to be fine, wonderful, balanced after a family weekend. And one day your lovely half suddenly says:\n" +
-                                "“You know, dear! You’re beautiful and perfect, but I’m nasty and not worthy of you. That’s why I’m breaking up with you.”"
-                    )
-
-                    Text(
-                        text = "Familiar? So this Pinot for you! Garnet red in colour. A vibrant wine with purity of fruit and great intensity. Packed with lively flavors and distinct herbaceous aromas.\n" +
-                                "Is it not enough to forget your ex?\n" +
-                                "Hold my glass! By tasting this wine you will feel a fragrant dark cherry with delicate violet notes and an elegant seductive texture. Raspberry, cherry and plum with subtle oak on the nose. Earthy character, long finish, dry with soft fruit tannins, a wine with serious structure and length."
-                    )
-
-                }
+                        .fillMaxHeight()
+                        .offset(y = 20.dp, x = 100.dp),
+                    contentScale = ContentScale.Crop
+                )
             }
-
-            Image(
-                painter = painterResource(id = R.drawable.wine_bodegas_beronia),
-                contentDescription = "wine image",
-                modifier = Modifier.fillMaxHeight().offset(y = 20.dp, x = 100.dp),
-                contentScale = ContentScale.Crop
-            )
         }
     }
 }

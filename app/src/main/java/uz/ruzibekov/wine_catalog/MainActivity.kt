@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import uz.ruzibekov.wine_catalog.data.model.CatalogData
+import uz.ruzibekov.wine_catalog.data.model.WineData
 import uz.ruzibekov.wine_catalog.ui.listeners.MainListeners
 import uz.ruzibekov.wine_catalog.ui.navigation.MainNavGraph
 import uz.ruzibekov.wine_catalog.ui.navigation.ScreensRoute
@@ -79,11 +80,16 @@ class MainActivity : ComponentActivity(), MainListeners {
     }
 
     override fun openCatalogScreen(data: CatalogData) {
-        navController?.navigate(ScreensRoute.Catalog.route)
         viewModel.state.selectedCatalog.value = data
+        navController?.navigate(ScreensRoute.Catalog.route)
     }
 
-    override fun openWineDetailsScreen() {
+    override fun openWineDetailsScreen(data: WineData) {
+        viewModel.state.selectedWine.value = data
         navController?.navigate(ScreensRoute.Details.route)
+    }
+
+    override fun onBackStack() {
+        navController?.popBackStack()
     }
 }

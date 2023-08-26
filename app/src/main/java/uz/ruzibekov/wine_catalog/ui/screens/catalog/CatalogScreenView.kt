@@ -20,29 +20,32 @@ object CatalogScreenView {
     @Composable
     fun Default(state: MainState, listeners: MainListeners) {
 
-        Scaffold(
-            topBar = {
-                CatalogTopBarView.Default()
-            }
-        ) { paddingValues ->
+        state.selectedCatalog.value?.let { catalog ->
 
-            state.selectedCatalog.value?.let { catalog ->
+            Scaffold(
+                topBar = {
+                    CatalogTopBarView.Default(catalog, listeners)
+                }
+            ) { paddingValues ->
 
-                HorizontalPager(
-                    modifier = Modifier.padding(paddingValues),
-                    pageCount = catalog.wines.size,
-                    contentPadding = PaddingValues(
-                        top = 40.dp,
-                        start = 20.dp,
-                        bottom = 48.dp,
-                        end = 40.dp
-                    ),
-                    pageSpacing = 10.dp
-                ) { page ->
+                state.selectedCatalog.value?.let { catalog ->
 
-                    CatalogWineItemView.Default(catalog.wines[page]) {
+                    HorizontalPager(
+                        modifier = Modifier.padding(paddingValues),
+                        pageCount = catalog.wines.size,
+                        contentPadding = PaddingValues(
+                            top = 40.dp,
+                            start = 20.dp,
+                            bottom = 48.dp,
+                            end = 40.dp
+                        ),
+                        pageSpacing = 10.dp
+                    ) { page ->
 
-                        listeners.openWineDetailsScreen()
+                        CatalogWineItemView.Default(catalog.wines[page]) {
+
+                            listeners.openWineDetailsScreen(catalog.wines[page])
+                        }
                     }
                 }
             }
