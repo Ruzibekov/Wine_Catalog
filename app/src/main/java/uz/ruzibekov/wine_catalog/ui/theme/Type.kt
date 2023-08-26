@@ -20,7 +20,6 @@ val Typography = Typography(
         fontFamily = BentonModernDisplay,
         fontWeight = FontWeight.Bold,
     ),
-
     bodyLarge = TextStyle(
         fontFamily = BentonModernDisplay,
         fontWeight = FontWeight.Normal,

@@ -1,4 +1,4 @@
-package uz.ruzibekov.wine_catalog.ui.screens.splash._components
+package uz.ruzibekov.wine_catalog.ui.screens.main._components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

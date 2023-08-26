@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Каталог вин</string>
     <string name="main_subtitle">Мы предлагаем винный набор практически на все случаи жизни. Выберите свой.</string>
+    <string name="catalog_subtitle">Ох, дорогой(ая)... Мы знаем лучшие сочетания вина и слез.</string>
 </resources>

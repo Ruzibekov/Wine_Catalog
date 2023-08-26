@@ -9,19 +9,24 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import uz.ruzibekov.wine_catalog.data.model.CatalogData
+import uz.ruzibekov.wine_catalog.ui.listeners.MainListeners
 import uz.ruzibekov.wine_catalog.ui.navigation.MainNavGraph
+import uz.ruzibekov.wine_catalog.ui.navigation.ScreensRoute
 import uz.ruzibekov.wine_catalog.ui.theme.AppColor
 import uz.ruzibekov.wine_catalog.ui.theme.WineCatalogTheme
 import java.io.IOException
 import java.io.InputStream
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(), MainListeners {
 
     private val viewModel: MainViewModel by viewModels()
+
+    private var navController: NavHostController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +42,13 @@ class MainActivity : ComponentActivity() {
                         .background(AppColor.Background)
                 ) {
 
-                    val navController = rememberNavController()
+                    navController = rememberNavController()
 
-                    MainNavGraph.Default(navController = navController)
+                    MainNavGraph.Default(
+                        navController = navController!!,
+                        state = viewModel.state,
+                        listeners = this@MainActivity
+                    )
                 }
             }
         }
@@ -54,7 +63,7 @@ class MainActivity : ComponentActivity() {
         viewModel.fetch(list)
     }
 
-    fun loadJSONFromAsset(path: String): String? {
+    private fun loadJSONFromAsset(path: String): String? {
         return try {
             val `is`: InputStream = assets.open(path)
             val size = `is`.available()
@@ -67,5 +76,9 @@ class MainActivity : ComponentActivity() {
             ex.printStackTrace()
             return null
         }
+    }
+
+    override fun openCatalogScreen() {
+        navController?.navigate(ScreensRoute.Catalog.route)
     }
 }

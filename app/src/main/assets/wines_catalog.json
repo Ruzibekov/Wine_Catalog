@@ -1,14 +1,15 @@
-{
-  "id": 1,
-  "name": "Разбитое сердце",
-  "wines": [
-    {
-      "id": 1,
-      "name": "Bodegas Beronia",
-      "variety": "РОЗОВОЕ, СУХОЕ",
-      "country": "Испания",
-      "region": "Риоха",
-      "main_grape": "Главный сорт винограда",
+[
+  {
+    "id": 1,
+    "name": "Разбитое сердце",
+    "wines": [
+      {
+        "id": 1,
+        "name": "Bodegas Beronia",
+        "variety": "РОЗОВОЕ, СУХОЕ",
+        "country": "Испания",
+        "region": "Риоха",
+        "main_grape": "Главный сорт винограда",
       "volume": "750ML"
     },
     {
@@ -40,4 +41,5 @@
     }
   ]
 }
+]
 
