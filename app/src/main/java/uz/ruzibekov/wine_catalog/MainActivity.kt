@@ -1,5 +1,6 @@
 package uz.ruzibekov.wine_catalog
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -92,4 +93,8 @@ class MainActivity : ComponentActivity(), MainListeners {
     override fun onBackStack() {
         navController?.popBackStack()
     }
+}
+
+fun String.getImageFromDrawableResources(context: Context): Int {
+    return context.resources.getIdentifier(this, "drawable", context.packageName)
 }

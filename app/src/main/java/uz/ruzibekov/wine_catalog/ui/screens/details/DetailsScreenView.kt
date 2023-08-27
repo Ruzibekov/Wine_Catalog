@@ -3,26 +3,35 @@ package uz.ruzibekov.wine_catalog.ui.screens.details
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import uz.ruzibekov.wine_catalog.R
+import uz.ruzibekov.wine_catalog.getImageFromDrawableResources
 import uz.ruzibekov.wine_catalog.state.MainState
 import uz.ruzibekov.wine_catalog.ui.listeners.MainListeners
 import uz.ruzibekov.wine_catalog.ui.screens.details._components.DetailsTopBarView
+import uz.ruzibekov.wine_catalog.ui.theme.AppColor
 
 object DetailsScreenView {
 
@@ -40,38 +49,91 @@ object DetailsScreenView {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {
-                        DetailsTopBarView.Default()
+                        DetailsTopBarView.Default {
+                            listeners.onBackStack()
+                        }
                     }
                 ) { paddingValues ->
 
                     Column(
                         modifier = Modifier
                             .padding(paddingValues)
-                            .padding(start = 38.dp, end = 200.dp)
+                            .padding(start = 38.dp, end = 150.dp)
                             .fillMaxWidth()
                             .verticalScroll(rememberScrollState())
                     ) {
 
-                        Text(text = "Paua Bay")
+                        Text(
+                            text = data.name,
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.width(100.dp),
+                            fontSize = 18.sp,
+                        )
 
-                        Text(text = "Red, Dry")
+                        Spacer(modifier = Modifier.height(16.dp))
 
                         Text(
-                            text = "Everything seems to be fine, wonderful, balanced after a family weekend. And one day your lovely half suddenly says:\n" +
-                                    "“You know, dear! You’re beautiful and perfect, but I’m nasty and not worthy of you. That’s why I’m breaking up with you.”"
+                            text = data.variety,
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.width(100.dp),
+                            fontSize = 18.sp,
+                        )
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Text(
+                            text = stringResource(R.string.country),
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.width(100.dp),
+                            fontSize = 18.sp,
+                            color = AppColor.Brown
                         )
 
                         Text(
-                            text = "Familiar? So this Pinot for you! Garnet red in colour. A vibrant wine with purity of fruit and great intensity. Packed with lively flavors and distinct herbaceous aromas.\n" +
-                                    "Is it not enough to forget your ex?\n" +
-                                    "Hold my glass! By tasting this wine you will feel a fragrant dark cherry with delicate violet notes and an elegant seductive texture. Raspberry, cherry and plum with subtle oak on the nose. Earthy character, long finish, dry with soft fruit tannins, a wine with serious structure and length."
+                            text = data.country,
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.width(100.dp),
+                            fontSize = 16.sp,
+                        )
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Text(
+                            text = stringResource(id = R.string.region),
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.width(100.dp),
+                            fontSize = 18.sp,
+                        )
+
+                        Text(
+                            text = data.region,
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.width(100.dp),
+                            fontSize = 18.sp,
+                        )
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Text(
+                            text = stringResource(id = R.string.main_grape),
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.width(100.dp),
+                            fontSize = 18.sp,
+                        )
+
+                        Text(
+                            text = data.main_grape,
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.width(100.dp),
+                            fontSize = 18.sp,
                         )
 
                     }
                 }
+                val image = data.image.getImageFromDrawableResources(LocalContext.current)
 
                 Image(
-                    painter = painterResource(id = R.drawable.wine_bodegas_beronia),
+                    painter = painterResource(id = image),
                     contentDescription = "wine image",
                     modifier = Modifier
                         .fillMaxHeight()

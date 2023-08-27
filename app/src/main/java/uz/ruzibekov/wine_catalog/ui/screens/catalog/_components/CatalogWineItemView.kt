@@ -20,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -28,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import uz.ruzibekov.wine_catalog.R
 import uz.ruzibekov.wine_catalog.data.model.WineData
+import uz.ruzibekov.wine_catalog.getImageFromDrawableResources
 import uz.ruzibekov.wine_catalog.ui.theme.AppColor
 
 object CatalogWineItemView {
@@ -145,14 +145,13 @@ object CatalogWineItemView {
             }
 
             val context = LocalContext.current
-            val resourceId = context.resources.getIdentifier(data.image, "drawable", context.packageName)
+            val resourceId = data.image.getImageFromDrawableResources(context)
 
             Image(
                 painter = painterResource(id = resourceId),
                 contentDescription = "wine image",
                 modifier = Modifier.fillMaxHeight(),
                 alignment = Alignment.BottomEnd,
-                contentScale = ContentScale.Crop
             )
         }
     }
